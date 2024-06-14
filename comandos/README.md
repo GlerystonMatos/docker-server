@@ -83,29 +83,70 @@ Apagar arquivos e pastas de um diretório:
 sudo rm -rf *
 ```
 
+# Personalizar o prompt do shell
+
+Use o comando nano para abrir o arquivo ~/.bashrc:
+
+```bash
+nano ~/.bashrc
+```
+
+```bash
+PS1='\[\e[1;32m\]\u@\h \[\e[1;34m\]\w \$\[\e[0m\] '
+```
+
+Esta configuração exibe o nome do usuário em verde, o nome do host em azul e o diretório de trabalho atual em azul.
+
+- \[\e[1;32m\] define a cor verde.
+- \u é substituído pelo nome do usuário.
+- \h é substituído pelo nome do host.
+- \[\e[1;34m\] define a cor azul.
+- \w é substituído pelo diretório de trabalho atual.
+- \[\e[0m\] redefine todas as cores ao padrão.
+
+Após adicionar a linha, recarregue o arquivo de configuração:
+```bash
+source ~/.bashrc
+```
+
 # Comandos docker
 
-Verificar imagens:
+Para verificar se o Docker está em execução, você pode usar o comando:
 ```bash
-sudo docker images
+systemctl status docker
 ```
 
-Verificar containers em execução:
+Para monitorar o uso de recursos (CPU, memória, rede, etc.) de um container:
 ```bash
-sudo docker ps
+docker stats
 ```
 
-Verificar containers:
+Para listar todas as imagens:
+```bash
+docker images
+```
+
+Para listar todos os containers (tanto em execução quanto parados):
 ```bash
 sudo docker ps -a
 ```
 
-Verifica logs de um container em execução:
+Para listar apenas os containers em execução:
 ```bash
-sudo docker logs quiron-api
+sudo docker ps
 ```
 
-Remover imagem:
+Para visualizar os logs de um container específico:
 ```bash
-sudo docker rmi 3a
+docker logs <container_id>
+```
+
+Para seguir os logs em tempo real:
+```bash
+docker logs -f <container_id>
+```
+
+Para remover uma imagem especifica:
+```bash
+docker rmi <container_id>
 ```
