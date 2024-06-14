@@ -1,8 +1,8 @@
 #!/bin/bash
 
-echo -e "Parando aplicações...\n"
+echo -e "\n[docker-server] - Parando aplicações...\n"
 
 sudo docker-compose down
 sudo docker rmi $(docker images | grep 'glerystonmatos')
 
-echo "Finalizado com sucesso"
+echo -e "\n[docker-server] - Finalizado com sucesso\n"

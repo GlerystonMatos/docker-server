@@ -75,6 +75,11 @@ Apagar arquivos e pastas de um diretório:
 sudo rm -rf *
 ```
 
+Listar arquivos inclusive ocultos:
+```bash
+sudo ls -a
+```
+
 # Personalizar o prompt do shell
 
 Use o comando nano para abrir o arquivo ~/.bashrc:

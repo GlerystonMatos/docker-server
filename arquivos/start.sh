@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo -e "Iniciando aplicações...\n"
+echo -e "\n[docker-server] - Iniciando aplicações...\n"
 
 sudo docker-compose up -d
 
-echo "Finalizado com sucesso"
+echo -e "\n[docker-server] - Finalizado com sucesso\n"
