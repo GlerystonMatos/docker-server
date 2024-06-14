@@ -1,36 +1,35 @@
 #!/bin/bash
 
-echo -e "[docker-server] - Atualizando o sistema e instalando as dependências necessárias...\n"
-sudo apt-get update
-sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+echo "[docker-server] - Atualizando o sistema..."
+sudo apt-get update > /dev/null 2>&1
 
-echo -e "\n[docker-server] - Adicionar a chave GPG oficial do docker...\n"
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+echo "[docker-server] - Instalando as dependências necessárias..."
+sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common > /dev/null 2>&1
 
-echo -e "\n[docker-server] - Adicionando o repositório do docker...\n"
-sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+echo "[docker-server] - Adicionar a chave GPG oficial do docker..."
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - > /dev/null 2>&1
 
-echo -e "\n[docker-server] - Atualizando o índice do pacote do APT novamente...\n"
-sudo apt-get update
+echo "[docker-server] - Adicionando o repositório do docker..."
+sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" > /dev/null 2>&1
 
-echo -e "\n[docker-server] - Instalando o docker...\n"
-sudo apt-get install -y docker-ce
+echo "[docker-server] - Atualizando o índice do pacote do APT novamente..."
+sudo apt-get update > /dev/null 2>&1
 
-echo -e "\n[docker-server] - Adicionando o usuário atual ao grupo docker para evitar necessidade de sudo para usar o docker..."
+echo "[docker-server] - Instalando o docker..."
+sudo apt-get install -y docker-ce > /dev/null 2>&1
+
+echo "[docker-server] - Adicionando o usuário atual ao grupo docker para evitar necessidade de sudo para usar o docker..."
 sudo usermod -aG docker ${USER}
 
-echo -e "[docker-server] - Baixando a última versão do docker compose...\n"
+echo "[docker-server] - Baixando a última versão do docker compose..."
 DOCKER_COMPOSE_VERSION=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)
-sudo curl -L "https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -s -L "https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
-echo -e "\n[docker-server] - Aplicando permissões executáveis ao binário do docker compose..."
+echo "[docker-server] - Aplicando permissões executáveis ao binário do docker compose..."
 sudo chmod +x /usr/local/bin/docker-compose
 
-echo -e "[docker-server] - Verificando instalação do docker...\n"
-docker --version
-
-echo -e "\n[docker-server] - Verificando instalação do docker compose...\n"
-docker-compose --version
+echo -e "[docker-server] - Verificando instalação do docker/docker-compose...\n"
+sudo docker --version
+sudo docker-compose --version
 
 echo -e "\n[docker-server] - Docker e docker compose foram instalados e o serviço foi iniciado com sucesso."
-echo -e "[docker-server] - Por favor, faça logout e login novamente ou reinicie seu sistema para aplicar as alterações de grupo do docker."

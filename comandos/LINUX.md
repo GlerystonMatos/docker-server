@@ -1,13 +1,38 @@
 # Comandos linux
 
-Desligar servidor imediatamente:
+Desligar servidor:
 ```bash
 poweroff
 ```
 
-Desligar servidor imediatamente:
+Desligar servidor:
 ```bash
 shutdown -h now
+```
+
+Reiniciar servidor:
+```bash
+reboot
+```
+
+Reiniciar servidor:
+```bash
+shutdown -r now
+```
+
+Fazer logout no servidor:
+```bash
+logout
+```
+
+Fazer logout no servidor:
+```bash
+exit
+```
+
+Instalar ferramentas de rede:
+```bash
+apt install net-tools
 ```
 
 Verificar IP do servidor:
@@ -15,93 +40,72 @@ Verificar IP do servidor:
 ifconfig
 ```
 
-Instalar ferramentas de rede:
+Criar um diretório:
 ```bash
-sudo apt install net-tool
-```
-
-Criar pasta:
-```bash
-mkdir shared
+mkdir <nome-da-pasta>
 ```
 
 Navegar para um diretório:
 ```bash
-cd shared/
+cd <nome-da-pasta>/
 ```
 
 Criar um arquivo:
 ```bash
-touch docker-compose.yml
+touch <nome_arquivo.extensao>
 ```
 
-Abrir arquivo com o nano:
+Abrir arquivo com o editor nano:
 ```bash
-nano docker-compose.yml
+nano <nome_arquivo.extensao>
 ```
 
-Ver conteúdo arquivo:
+Ver conteúdo de um arquivo:
 ```bash
-cat docker-compose.yml
+cat <nome_arquivo.extensao>
 ```
 
-Apagar pasta:
+Apagar um arquivo:
 ```bash
-rmdir shared
+rm <nome_arquivo.extensao>
 ```
 
-Apagar arquivo:
+Apagar um diretório:
 ```bash
-rm docker-compose.yml
+rmdir <nome-da-pasta>
 ```
 
-Baixar arquivo remoto:
+Baixar um arquivo a partir de um link externo:
 ```bash
-sudo curl -L -O https://raw.githubusercontent.com/GlerystonMatos/docker-server/main/arquivos/install.sh
+curl -s -L -O <caminho-arquivo-remoto>
 ```
 
-Dar permissão de execução para o script:
+Dar permissão de execução para um script .sh:
 ```bash
-sudo chmod +x install.sh
+chmod +x <nome_script>.sh
 ```
 
-Dar permissão de execução para o script:
+Executar um script .sh:
 ```bash
-sudo ./install.sh
+./<nome_script>.sh
 ```
 
-Apagar arquivos e pastas de um diretório:
+Apagar todos os arquivos e pastas de um diretório:
 ```bash
-sudo rm -rf *
+rm -rf *
 ```
 
-Listar arquivos inclusive ocultos:
+Listar todos os arquivos e pastas de um diretório (Inclusive ocultos):
 ```bash
-sudo ls -a
+ls -a
 ```
 
-# Personalizar o prompt do shell
-
-Use o comando nano para abrir o arquivo ~/.bashrc:
-
+Arir o arquivo de configuração do usuário (.bashrc) usando o editor nano:
 ```bash
 nano ~/.bashrc
 ```
 
-```bash
-PS1='\[\e[1;32m\]\u@\h \[\e[1;34m\]\w \$\[\e[0m\] '
-```
-
-Esta configuração exibe o nome do usuário em verde, o nome do host em azul e o diretório de trabalho atual em azul.
-
-- \[\e[1;32m\] define a cor verde.
-- \u é substituído pelo nome do usuário.
-- \h é substituído pelo nome do host.
-- \[\e[1;34m\] define a cor azul.
-- \w é substituído pelo diretório de trabalho atual.
-- \[\e[0m\] redefine todas as cores ao padrão.
-
-Após adicionar a linha, recarregue o arquivo de configuração:
+Recarregar arquivo de configuração do usuário (.bashrc):
 ```bash
 source ~/.bashrc
 ```

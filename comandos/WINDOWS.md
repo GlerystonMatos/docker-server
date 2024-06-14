@@ -1,7 +1,7 @@
 # Comandos windows
 
-Conectar no servidor linux via SSH
-
+Conectar no servidor via SSH (usuario:ip)<br>
+Após executar o comando será solicitada a senha do usuário informado:
 ```bash
-ssh glerystonmatos@10.0.0.195
+ssh usuario@ip
 ```

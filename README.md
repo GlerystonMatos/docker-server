@@ -12,6 +12,8 @@ ssh -V
 ```
 O processo para criação da máquina virtual pode ser encontrado <a href="https://github.com/GlerystonMatos/docker-server/blob/main/configuracao-vm/README.md" target="_blank">aqui</a>
 
+O processo para instalação do ambiente pode ser encontrado <a href="https://github.com/GlerystonMatos/docker-server/blob/main/comandos/AMBIENTE.md" target="_blank">aqui</a>
+
 Uma lista com os principais comandos necessários pode ser encontrada nos seguintes links:
 <a href="https://github.com/GlerystonMatos/docker-server/blob/main/comandos/WINDOWS.md" target="_blank">Windows</a>
 <a href="https://github.com/GlerystonMatos/docker-server/blob/main/comandos/LINUX.md" target="_blank">Linux</a>
