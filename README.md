@@ -12,7 +12,10 @@ ssh -V
 ```
 O processo para criação da máquina virtual pode ser encontrado <a href="https://github.com/GlerystonMatos/docker-server/blob/main/configuracao-vm/README.md" target="_blank">aqui</a>
 
-Uma lista com os principais comandos necessários pode ser encontrada <a href="https://github.com/GlerystonMatos/docker-server/blob/main/comandos/README.md" target="_blank">aqui</a>
+Uma lista com os principais comandos necessários pode ser encontrada nos seguintes links:
+<a href="https://github.com/GlerystonMatos/docker-server/blob/main/comandos/WINDOWS.md" target="_blank">Windows</a>
+<a href="https://github.com/GlerystonMatos/docker-server/blob/main/comandos/LINUX.md" target="_blank">Linux</a>
+<a href="https://github.com/GlerystonMatos/docker-server/blob/main/comandos/DOCKER.md" target="_blank">Docker</a>
 
 # <img alt="warning" height="20" src="./imagens/warning.png" style="margin-bottom: -9px !important"> licença
 `docker-server` é um projeto livre e de código aberto licenciado sob a [MIT License](./LICENSE).
