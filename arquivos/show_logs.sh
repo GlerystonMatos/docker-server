@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo docker logs -f quiron-api
+sudo docker logs -f $1

@@ -40,7 +40,7 @@ Entrar na pasta de armazenamento dos arquivos da instalação:
 cd docker-server/
 ```
 
-Baixar arquivo de instalação do ambiente:
+Baixar script de instalação do ambiente:
 ```bash
 sudo curl -s -L -O https://raw.githubusercontent.com/GlerystonMatos/docker-server/main/arquivos/install.sh
 ```
