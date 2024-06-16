@@ -1,22 +1,22 @@
 #!/bin/bash
 
 echo "[docker-server] - Atualizando o sistema..."
-sudo apt-get update > /dev/null 2>&1
+sudo apt-get update >/dev/null 2>&1
 
 echo "[docker-server] - Instalando as dependências necessárias..."
-sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common > /dev/null 2>&1
+sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common >/dev/null 2>&1
 
 echo "[docker-server] - Adicionar a chave GPG oficial do docker..."
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - > /dev/null 2>&1
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - >/dev/null 2>&1
 
 echo "[docker-server] - Adicionando o repositório do docker..."
-sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" > /dev/null 2>&1
+sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" >/dev/null 2>&1
 
 echo "[docker-server] - Atualizando o índice do pacote do APT novamente..."
-sudo apt-get update > /dev/null 2>&1
+sudo apt-get update >/dev/null 2>&1
 
 echo "[docker-server] - Instalando o docker..."
-sudo apt-get install -y docker-ce > /dev/null 2>&1
+sudo apt-get install -y docker-ce >/dev/null 2>&1
 
 echo "[docker-server] - Adicionando o usuário atual ao grupo docker para evitar necessidade de sudo para usar o docker..."
 sudo usermod -aG docker ${USER}

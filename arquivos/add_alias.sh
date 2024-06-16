@@ -11,23 +11,19 @@ cd /home/$target_user/
 function_name="functions-comandos"
 
 if ! grep -q "$function_name" .bashrc; then
-    echo "" >> .bashrc
-    echo "# $function_name" >> .bashrc
+    echo "" >>.bashrc
+    echo "# $function_name" >>.bashrc
     echo "[docker-server] - Linha # '$function_name' adicionada ao arquivo de configuração do usuário $target_user"
 else
     echo "[docker-server] - Linha # '$function_name' já existe no arquivo de configuração do usuário $target_user"
 fi
 
 function_name="show_logs_func"
-function_content=$(cat <<'EOF'
-show_logs_func() {
-    ~/scripts/show_logs.sh "$@"
-}
-EOF
-)
 
 if ! grep -q "$function_name" .bashrc; then
-    echo $function_content >> .bashrc 
+    echo 'show_logs_func() {' >>.bashrc
+    echo '    ~/scripts/show_logs.sh "$@"' >>.bashrc
+    echo '}' >>.bashrc
     echo "[docker-server] - Função '$function_name' adicionada ao arquivo de configuração do usuário $target_user"
 else
     echo "[docker-server] - Função '$function_name' já existe no arquivo de configuração do usuário $target_user"
@@ -36,8 +32,8 @@ fi
 alias_name="alias-comandos"
 
 if ! grep -q "$alias_name" .bashrc; then
-    echo "" >> .bashrc
-    echo "# $alias_name" >> .bashrc
+    echo "" >>.bashrc
+    echo "# $alias_name" >>.bashrc
     echo "[docker-server] - Linha # '$alias_name' adicionada ao arquivo de configuração do usuário $target_user"
 else
     echo "[docker-server] - Linha # '$alias_name' já existe no arquivo de configuração do usuário $target_user"
@@ -48,7 +44,7 @@ alias_command="~/scripts/start.sh"
 alias_line="alias $alias_name='$alias_command'"
 
 if ! grep -q "$alias_line" .bashrc; then
-    echo "$alias_line" >> .bashrc
+    echo "$alias_line" >>.bashrc
     echo "[docker-server] - Alias '$alias_name' adicionada ao arquivo de configuração do usuário $target_user"
 else
     echo "[docker-server] - Alias '$alias_name' já existe no arquivo de configuração do usuário $target_user"
@@ -59,7 +55,7 @@ alias_command="~/scripts/stop.sh"
 alias_line="alias $alias_name='$alias_command'"
 
 if ! grep -q "$alias_line" .bashrc; then
-    echo "$alias_line" >> .bashrc
+    echo "$alias_line" >>.bashrc
     echo "[docker-server] - Alias '$alias_name' adicionada ao arquivo de configuração do usuário $target_user"
 else
     echo "[docker-server] - Alias '$alias_name' já existe no arquivo de configuração do usuário $target_user"
@@ -70,7 +66,7 @@ alias_command="~/scripts/restart.sh"
 alias_line="alias $alias_name='$alias_command'"
 
 if ! grep -q "$alias_line" .bashrc; then
-    echo "$alias_line" >> .bashrc
+    echo "$alias_line" >>.bashrc
     echo "[docker-server] - Alias '$alias_name' adicionada ao arquivo de configuração do usuário $target_user"
 else
     echo "[docker-server] - Alias '$alias_name' já existe no arquivo de configuração do usuário $target_user"
@@ -81,7 +77,7 @@ alias_command="~/scripts/status.sh"
 alias_line="alias $alias_name='$alias_command'"
 
 if ! grep -q "$alias_line" .bashrc; then
-    echo "$alias_line" >> .bashrc
+    echo "$alias_line" >>.bashrc
     echo "[docker-server] - Alias '$alias_name' adicionada ao arquivo de configuração do usuário $target_user"
 else
     echo "[docker-server] - Alias '$alias_name' já existe no arquivo de configuração do usuário $target_user"
@@ -92,7 +88,7 @@ alias_command="show_logs_func"
 alias_line="alias $alias_name='$alias_command'"
 
 if ! grep -q "$alias_line" .bashrc; then
-    echo "$alias_line" >> .bashrc
+    echo "$alias_line" >>.bashrc
     echo "[docker-server] - Alias '$alias_name' adicionada ao arquivo de configuração do usuário $target_user"
 else
     echo "[docker-server] - Alias '$alias_name' já existe no arquivo de configuração do usuário $target_user"
@@ -103,7 +99,7 @@ alias_command="~/scripts/commands.sh"
 alias_line="alias $alias_name='$alias_command'"
 
 if ! grep -q "$alias_line" .bashrc; then
-    echo "$alias_line" >> .bashrc
+    echo "$alias_line" >>.bashrc
     echo "[docker-server] - Alias '$alias_name' adicionada ao arquivo de configuração do usuário $target_user"
 else
     echo "[docker-server] - Alias '$alias_name' já existe no arquivo de configuração do usuário $target_user"
