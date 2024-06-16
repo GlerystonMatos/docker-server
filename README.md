@@ -19,5 +19,7 @@ Uma lista com os principais comandos necessários pode ser encontrada nos seguin
 <a href="https://github.com/GlerystonMatos/docker-server/blob/main/comandos/LINUX.md" target="_blank">Linux</a>
 <a href="https://github.com/GlerystonMatos/docker-server/blob/main/comandos/DOCKER.md" target="_blank">Docker</a>
 
+Caso queira usar o servidor para testes com projetos em desenvolvimento, podemos compartilhar as pastas dos projetos entre as máquinas, permitindo trabalhar com as imagens e containers dentro do servidor, sem a necessidade da instalação do docker na maquina host, os paços para este processo podem ser obtidos <a href="https://github.com/GlerystonMatos/docker-server/blob/main/comandos/DIRETORIO.md" target="_blank">aqui</a>
+
 # <img alt="warning" height="20" src="./imagens/warning.png" style="margin-bottom: -9px !important"> licença
 `docker-server` é um projeto livre e de código aberto licenciado sob a [MIT License](./LICENSE).
