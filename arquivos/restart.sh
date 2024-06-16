@@ -1,5 +1,5 @@
 #!/bin/bash
 
-./stop.sh
+~/scripts/stop.sh
 sudo nano .env
-./start.sh
+~/scripts/start.sh

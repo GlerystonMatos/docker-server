@@ -20,6 +20,7 @@ sudo apt-get install -y docker-ce > /dev/null 2>&1
 
 echo "[docker-server] - Adicionando o usuário atual ao grupo docker para evitar necessidade de sudo para usar o docker..."
 sudo usermod -aG docker ${USER}
+sudo usermod -aG docker ${SUDO_USER}
 
 echo "[docker-server] - Baixando a última versão do docker compose..."
 DOCKER_COMPOSE_VERSION=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)

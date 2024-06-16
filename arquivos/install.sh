@@ -14,13 +14,16 @@ sudo curl -s -L -O https://raw.githubusercontent.com/GlerystonMatos/docker-serve
 sudo curl -s -L -O https://raw.githubusercontent.com/GlerystonMatos/docker-server/main/arquivos/status.sh
 sudo curl -s -L -O https://raw.githubusercontent.com/GlerystonMatos/docker-server/main/arquivos/stop.sh
 
-echo "[docker-server] - Criando diretórios necessários..."
+echo "[docker-server] - Criando diretório para armazenamento de arquivos compartilhados com as aplicações do ambiente..."
 sudo mkdir -p arquivos
 
-echo "[docker-server] - Copiando certificado de desenvolvimento para diretório de arquivos..."
+echo "[docker-server] - Copiando certificado de desenvolvimento para diretório de arquivos compartilhados..."
 sudo mv -f certificado.pfx arquivos/
 
-echo "[docker-server] - Dando permissão de execução para os arquivos .sh..."
+echo "[docker-server] - Abrindo arquivo de configuração de variáveis de ambiente para edição..."
+sudo nano .env
+
+echo "[docker-server] - Dando permissão de execução para os scripts da instalação..."
 sudo chmod +x add_alias.sh
 sudo chmod +x commands.sh
 sudo chmod +x prepare.sh
@@ -31,40 +34,44 @@ sudo chmod +x start.sh
 sudo chmod +x status.sh
 sudo chmod +x stop.sh
 
+echo "[docker-server] - Movendo os scripts da instalação para a pasta do usuário..."
+sudo mv -f add_alias.sh ../
+sudo mv -f commands.sh ../
+sudo mv -f prepare.sh ../
+sudo mv -f reboot.sh ../
+sudo mv -f restart.sh ../
+sudo mv -f show_logs.sh ../
+sudo mv -f start.sh ../
+sudo mv -f status.sh ../
+sudo mv -f stop.sh ../
+
+echo "[docker-server] - Criando diretório para armazenar os scripts..."
+cd ..
+sudo mkdir -p scripts
+
+echo "[docker-server] - Movendo scripts para novo diretório no usuário ..."
+sudo mv -f add_alias.sh scripts/
+sudo mv -f commands.sh scripts/
+sudo mv -f prepare.sh scripts/
+sudo mv -f reboot.sh scripts/
+sudo mv -f restart.sh scripts/
+sudo mv -f show_logs.sh scripts/
+sudo mv -f start.sh scripts/
+sudo mv -f status.sh scripts/
+sudo mv -f stop.sh scripts/
+cd scripts/
+
 echo "[docker-server] - Criando alias no sistema..."
 ./add_alias.sh
 
 echo "[docker-server] - Preparando ambiente..."
 ./prepare.sh
 
-echo "[docker-server] - Abrindo arquivo de configuração de variáveis de ambiente para edição..."
-sudo nano .env
-
-echo -e "[docker-server] - Iniciando aplicações...\n"
-./start.sh
-
-echo -e "\n[docker-server] - Instalação finalizada\n"
+echo -e "[docker-server] - Instalação finalizada\n"
 ./commands.sh
 
-echo "[docker-server] - Instalando scripts na pasta do usuário..."
-sudo mv -f start.sh ../
-sudo mv -f stop.sh ../
-sudo mv -f restart.sh ../
-sudo mv -f status.sh ../
-sudo mv -f show_logs.sh ../
-sudo mv -f commands.sh ../
-
-cd ..
-sudo mkdir -p scripts
-
-sudo mv -f start.sh /scripts
-sudo mv -f stop.sh /scripts
-sudo mv -f restart.sh /scripts
-sudo mv -f status.sh /scripts
-sudo mv -f show_logs.sh /scripts
-sudo mv -f commands.sh /scripts
-
 echo -e "\n[docker-server] - Caso queira ver os comandos disponíveis novamente basta usar o comando: comandos"
-echo "[docker-server] - Por favor, faça logout e login novamente ou reinicie seu sistema para aplicar as alterações de grupo do docker"
+echo "[docker-server] - Por favor reinicie seu sistema para aplicar as alterações de grupo do docker ou faça logout e login novamente"
+echo "[docker-server] - Após reiniciar será necessário iniciar as aplicações usando o comando iniciar na pasta do ambiente"
 
 ./reboot.sh
