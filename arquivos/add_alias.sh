@@ -29,6 +29,28 @@ else
     echo "[docker-server] - Função '$function_name' já existe no arquivo de configuração do usuário $target_user"
 fi
 
+function_name="inspect_func"
+
+if ! grep -q "$function_name" .bashrc; then
+    echo 'inspect_func() {' >>.bashrc
+    echo '    ~/scripts/inspect.sh "$@"' >>.bashrc
+    echo '}' >>.bashrc
+    echo "[docker-server] - Função '$function_name' adicionada ao arquivo de configuração do usuário $target_user"
+else
+    echo "[docker-server] - Função '$function_name' já existe no arquivo de configuração do usuário $target_user"
+fi
+
+function_name="access_func"
+
+if ! grep -q "$function_name" .bashrc; then
+    echo 'access_func() {' >>.bashrc
+    echo '    ~/scripts/access.sh "$@"' >>.bashrc
+    echo '}' >>.bashrc
+    echo "[docker-server] - Função '$function_name' adicionada ao arquivo de configuração do usuário $target_user"
+else
+    echo "[docker-server] - Função '$function_name' já existe no arquivo de configuração do usuário $target_user"
+fi
+
 alias_name="alias-comandos"
 
 if ! grep -q "$alias_name" .bashrc; then
@@ -94,8 +116,41 @@ else
     echo "[docker-server] - Alias '$alias_name' já existe no arquivo de configuração do usuário $target_user"
 fi
 
+alias_name="inspecionar"
+alias_command="inspect_func"
+alias_line="alias $alias_name='$alias_command'"
+
+if ! grep -q "$alias_line" .bashrc; then
+    echo "$alias_line" >>.bashrc
+    echo "[docker-server] - Alias '$alias_name' adicionada ao arquivo de configuração do usuário $target_user"
+else
+    echo "[docker-server] - Alias '$alias_name' já existe no arquivo de configuração do usuário $target_user"
+fi
+
+alias_name="acessar"
+alias_command="access_func"
+alias_line="alias $alias_name='$alias_command'"
+
+if ! grep -q "$alias_line" .bashrc; then
+    echo "$alias_line" >>.bashrc
+    echo "[docker-server] - Alias '$alias_name' adicionada ao arquivo de configuração do usuário $target_user"
+else
+    echo "[docker-server] - Alias '$alias_name' já existe no arquivo de configuração do usuário $target_user"
+fi
+
 alias_name="comandos"
 alias_command="~/scripts/commands.sh"
+alias_line="alias $alias_name='$alias_command'"
+
+if ! grep -q "$alias_line" .bashrc; then
+    echo "$alias_line" >>.bashrc
+    echo "[docker-server] - Alias '$alias_name' adicionada ao arquivo de configuração do usuário $target_user"
+else
+    echo "[docker-server] - Alias '$alias_name' já existe no arquivo de configuração do usuário $target_user"
+fi
+
+alias_name="atualizar"
+alias_command="~/scripts/update.sh"
 alias_line="alias $alias_name='$alias_command'"
 
 if ! grep -q "$alias_line" .bashrc; then

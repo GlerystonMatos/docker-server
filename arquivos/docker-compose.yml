@@ -6,12 +6,8 @@ services:
     container_name: quiron-api
     restart: on-failure
     ports:
-      - 5001:80
-      - 5002:443
-    environment:
-      - TZ=America/Sao_Paulo
-      - ASPNETCORE_HTTPS_PORT=443
-      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ${PORTA_HTTP_API}:80
+      - ${PORTA_HTTPS_API}:443
     volumes:
       - ./arquivos:/app/arquivos
     networks:
